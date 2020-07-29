@@ -5,6 +5,8 @@ import javafx.stage.Stage;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
@@ -28,6 +30,11 @@ public class Main extends Application {
 			text.setText("Hello, world !");
 			text.setFont(Font.font("Cambria", FontPosture.ITALIC, 45));
 			root.setCenter(text);
+			
+			MenuBar menuBar = new MenuBar();
+			menuBar.getMenus().add(new Menu("Premier menu"));
+			menuBar.getMenus().add(new Menu("Deuxième menu"));
+			root.setTop(menuBar);
 			
 			Rectangle rect2 = new Rectangle(60, 60, 200, 200);
             rect2.setFill(new LinearGradient(0, 0, 1, 0, true, CycleMethod.NO_CYCLE, new Stop[] { new Stop(0, Color.BLACK), new Stop(1, Color.RED)}));
