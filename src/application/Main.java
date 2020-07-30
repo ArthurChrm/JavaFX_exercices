@@ -12,10 +12,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -37,10 +41,18 @@ public class Main extends Application {
 			Scene scene = new Scene(root,600,600);
 			
 			MenuBar menuBar = new MenuBar();
-			menuBar.getMenus().add(new Menu("Premier menu"));
-			menuBar.getMenus().add(new Menu("Deuxième menu"));
+			MenuItem menuItem = new MenuItem("Fermer");
+			//menuItem.setAccelerator(new KeyCodeCombination(KeyCode.F));
+			menuItem.setAccelerator(KeyCombination.keyCombination("Ctrl+F"));
+			Menu menu1 = new Menu("Fichier", null,menuItem);
+			menu1.setOnAction(new EventHandler<ActionEvent>() {				
+				@Override
+				public void handle(ActionEvent event) {
+					System.exit(0);
+				}
+			});
+			menuBar.getMenus().add(menu1);
 			root.setTop(menuBar);
-			
 
 			GridPane grid = new GridPane();
 			
