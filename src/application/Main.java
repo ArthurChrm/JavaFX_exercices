@@ -1,6 +1,7 @@
 package application;
 	
 import javafx.application.Application;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -11,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -64,6 +66,27 @@ public class Main extends Application {
             image.setImage(new Image("file:C:\\Users\\arthu\\exercices\\JavaFX\\resources\\chat.jpg",100, 100, false, false));
             image.setEffect(new DropShadow(20, Color.BLACK));
             grid.add(image,  0, 1);
+            
+            ProgressBar progressBar = new ProgressBar();
+            grid.add(progressBar, 1, 1);
+            
+            Task task = new Task<Void>() {
+                @Override public Void call() {
+                    final int max = 1000000;
+                    for (int i=1; i<=max; i++) {
+                        if (isCancelled()) {
+                           break;
+                        }
+                        System.out.println("Simulation d'une longue tâche...");
+                        updateProgress(i, max);
+                    }
+                    return null;
+                }
+            };
+            ProgressBar bar = new ProgressBar();
+            grid.add(bar, 1, 1);
+            bar.progressProperty().bind(task.progressProperty());
+            new Thread(task).start();
             
             root.setCenter(grid);
 			
