@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -61,6 +62,7 @@ public class Main extends Application {
             
             ImageView image = new ImageView();
             image.setImage(new Image("file:C:\\Users\\arthu\\exercices\\JavaFX\\resources\\chat.jpg",100, 100, false, false));
+            image.setEffect(new DropShadow(20, Color.BLACK));
             grid.add(image,  0, 1);
             
             root.setCenter(grid);
