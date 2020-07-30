@@ -8,10 +8,12 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -116,6 +118,9 @@ public class Main extends Application {
 			numCol.setCellValueFactory(new PropertyValueFactory<Personne, String>("numeroTelephone"));
 			table.setItems(data);
 			grid.add(table, 0, 2);
+			
+			SplitPane splitPane = new SplitPane();
+			grid.add(splitPane, 1, 2);
 
 			root.setCenter(grid);
 
